@@ -1,0 +1,4 @@
+rootProject.name = 'cities'
+
+include "applications:cities-service"
+include "applications:cities-app"
