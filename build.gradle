@@ -24,7 +24,6 @@ group 'com.perficient.training'
 version '1.0-SNAPSHOT'
 
 subprojects {
-    group "io.pivotal.pal.tracker"
 
     apply plugin: "java"
     defaultTasks "clean", "build"

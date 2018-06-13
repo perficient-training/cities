@@ -1,1 +1,13 @@
 apply from: "$projectDir/../applications.gradle"
+
+apply plugin: "war"
+
+
+ dependencies {
+     compile "org.springframework.boot:spring-boot-starter-tomcat"
+     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.7.0"
+     compile "taglibs:standard:1.1.2"
+     compile "javax.servlet:jstl:1.2"
+
+     compile "org.apache.tomcat.embed:tomcat-embed-jasper:8.5.6"
+ }
