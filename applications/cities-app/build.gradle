@@ -1,1 +1,6 @@
 apply from: "$projectDir/../applications.gradle"
+
+dependencies {
+    compile project(":applications:cities-service")
+}
+

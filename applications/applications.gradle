@@ -10,7 +10,7 @@ dependencyManagement {
 dependencies {
 
     compile "org.springframework.boot:spring-boot-starter-web"
-    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry"
+//    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry"
     compile "ch.qos.logback:logback-classic:1.1.11"
 
 }
