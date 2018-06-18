@@ -21,6 +21,10 @@ public class CityController {
     private static final int DEFAULT_PAGE_NUMBER = 0;
     private static final int DEFAULT_PAGE_SIZE = 10;
 
+    public CityController(CityRepository cityRepository) {
+        this.cityRepository = cityRepository;
+    }
+
 
     @PostMapping("/cities")
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,8 +42,15 @@ public class CityController {
 
     @GetMapping("/cities/{cityName}")
     @ResponseStatus(HttpStatus.OK)
-    public City find(@PathVariable String cityName){
-        return this.cityRepository.findByCityName(cityName);
+    public Page<City> findByCityName(@PathVariable String cityName,
+                           @PageableDefault(page = DEFAULT_PAGE_NUMBER, size = DEFAULT_PAGE_SIZE) Pageable pageable){
+        return this.cityRepository.findByCityName(cityName,pageable);
+    }
+
+    @GetMapping("/cities/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public City findById(@PathVariable long id){
+        return this.cityRepository.findById(id);
     }
 
 
@@ -48,17 +59,20 @@ public class CityController {
     @ResponseStatus(HttpStatus.OK)
     public City update(@PathVariable long id, @RequestBody City city){
 
-        City updateCity = cityRepository.findById(id);
-        updateCity.setPostalCode(city.getPostalCode());
-        updateCity.setStateCode((city.getStateCode()));
-        updateCity.setCityName(city.getCityName());
-        updateCity.setCountyName(city.getCountyName());
-        updateCity.setLattitude(city.getLattitude());
-        updateCity.setLongitude(city.getLongitude());
+        try {
+            City updateCity;
+            updateCity = cityRepository.findById(id);
+            updateCity.setPostalCode(city.getPostalCode());
+            updateCity.setStateCode((city.getStateCode()));
+            updateCity.setCityName(city.getCityName());
+            updateCity.setCountyName(city.getCountyName());
+            updateCity.setLatitude(city.getLatitude());
+            updateCity.setLongitude(city.getLongitude());
 
-        City updatedCity = cityRepository.save(updateCity);
-
-        return updatedCity;
+            return cityRepository.save(updateCity);
+        }catch (Exception e){
+            return cityRepository.save(city);
+        }
     }
 
     @DeleteMapping("/cities/{id}")

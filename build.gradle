@@ -42,8 +42,5 @@ subprojects {
         compile "mysql:mysql-connector-java:5.1.44"
         compile "org.projectlombok:lombok:1.16.18"
 
-        testCompile "junit:junit:4.12"
-        testCompile "org.mockito:mockito-core:2.2.26"
-        testCompile "org.assertj:assertj-core:3.8.0"
     }
 }

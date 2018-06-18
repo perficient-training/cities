@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Data
 @Entity
@@ -29,17 +28,17 @@ public class City {
     @Column(name = "county")
     private String countyName;
 
-    private double lattitude;
+    private double latitude;
 
     private double longitude;
 
 
-    public City(String postalCode, String stateCode, String cityName, String countyName, double lattitude, double longitude) {
+    public City(String postalCode, String stateCode, String cityName, String countyName, double latitude, double longitude) {
         this.postalCode = postalCode;
         this.stateCode = stateCode;
         this.cityName = cityName;
         this.countyName = countyName;
-        this.lattitude = lattitude;
+        this.latitude = latitude;
         this.longitude = longitude;
     }
 

@@ -2,4 +2,6 @@ apply from: "$projectDir/../applications.gradle"
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile "com.h2database:h2"
 }
